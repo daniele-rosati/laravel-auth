@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -16,8 +16,16 @@
                         {{ session('status') }}
                     </div>
                     @endif
+                    
 
                     {{ __('You are logged in!') }}
+
+                    <div>
+                        Benvunuto {{ $user->name }}
+                    </div>
+                    <div>
+                        Ti sei loggato con l'email: {{ $user->email }}
+                    </div>
                 </div>
             </div>
         </div>
