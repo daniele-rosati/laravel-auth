@@ -12,7 +12,7 @@
       <th scope="col">Client Name</th>
       <!-- <th scope="col">Summary</th> -->
       <th scope="col">Create at</th>
-      <th scope="col">Update at</th>
+      <th scope="col">Slug</th>
       <th scope="col">Action</th>
      
     </tr>
@@ -27,10 +27,23 @@
       <td> {{ $project->client_name }} </td>
       <!-- <td> {{ $project->summary }} </td> -->
       <td> {{ $project-> created_at}} </td>
-      <td> {{ $project->updated_at }} </td>
+      <td> {{ $project->slug }} </td>
       <td> 
         <div>
-            <a href="{{ route ('admin.projects.show', ['project'=> $project->id] ) }}">View more</a>
+            <a href="{{ route ('admin.projects.show', ['project'=> $project->id] ) }}">View</a>
+        </div>
+
+        <div>
+            <a href="{{ route ('admin.projects.edit', ['project'=> $project->id] ) }}">Edit</a>
+        </div>
+
+        <div>
+          <form action="{{ route ('admin.projects.destroy', ['project'=> $project->id] ) }}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
         </div>
       </td>
     </tr>

@@ -33,4 +33,12 @@
 
     </div>
 
+    <div class="mt-4">
+        <h4>Action: </h4>
+
+        <div>
+            <a class="btn btn-primary" href="{{ route ('admin.projects.edit', ['project'=> $project->id] ) }}"> Edit</a>
+        </div>
+    </div>
+
 @endsection
