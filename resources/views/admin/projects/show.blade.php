@@ -35,9 +35,18 @@
 
     <div class="mt-4">
         <h4>Action: </h4>
+        <div class="d-flex" style="justify-content:space-between">
+            <div>
+                <a class="btn btn-primary" href="{{ route ('admin.projects.edit', ['project'=> $project->id] ) }}"> Edit</a>
+            </div>
+            <div>
+                <form action="{{ route ('admin.projects.destroy', ['project'=> $project->id] ) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
 
-        <div>
-            <a class="btn btn-primary" href="{{ route ('admin.projects.edit', ['project'=> $project->id] ) }}"> Edit</a>
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
 

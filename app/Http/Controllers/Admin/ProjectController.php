@@ -40,16 +40,24 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:5|max:250',
+            'client_name' => 'nullable|min:5',
+            'summary' => 'nullable|min:20'
+        ]);
+
         $formData = $request->all();
+
         // slug = Str::slug( $newProject->name, '-');
+
         $newProject = new Project();
-      
         $newProject->fill($formData);
         $newProject->slug = Str::slug( $formData['name'], '-');
+
         // dd($newProject);
         
         $newProject->save();
-       
+
         return redirect()->route('admin.projects.show', ['project'=> $newProject->id]);
 
     }
