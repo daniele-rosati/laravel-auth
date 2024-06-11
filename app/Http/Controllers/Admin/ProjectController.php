@@ -58,7 +58,7 @@ class ProjectController extends Controller
         
         $newProject->save();
 
-        return redirect()->route('admin.projects.show', ['project'=> $newProject->id]);
+        return redirect()->route('admin.projects.show', ['project'=> $newProject->slug]);
 
     }
 
@@ -101,7 +101,7 @@ class ProjectController extends Controller
                 'required',
                 'min:5',
                 'max:250',
-                Rule::unique('projects')->ignore($project->id),
+                Rule::unique('projects')->ignore($project->slug),
             ],
 
             'client_name' => 'nullable|min:5',
@@ -114,7 +114,7 @@ class ProjectController extends Controller
 
         $project->update($formData);
 
-        return redirect()->route('admin.projects.show', ['project'=> $project->id]);
+        return redirect()->route('admin.projects.show', ['project'=> $project->slug]);
 
         // dd($project);
     }
